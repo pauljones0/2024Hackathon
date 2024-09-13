@@ -1,23 +1,22 @@
 import { ISSApi } from "./iss-api.js";
+import { calculateAngle } from "./utilities.js";
 
 let map;
 let marker;
 const issApiInstance = new ISSApi;
 
-const getIssPositionApiCall = async () => {
-    try {
-        const issPosition = await issApiInstance.getIssPosition();
-        return issPosition;
-    } catch (error) {
-        console.error(error)
-    }
-}
-
 let prevPosition = null;
 
-const issPosititoData = async () => {
+const issPosititoData = async (isInitialCall = false) => {
     try {
         const { latitude, longitude } = await issApiInstance.getIssPosition();
+        const newLatLng = [latitude, longitude];
+
+        if (isInitialCall) {
+            // For the initial call, just store the position and return
+            prevPosition = newLatLng;
+            return;
+        }
 
         const issIcon = L.icon({
             iconUrl: './assets/images/iss-icon.png',
@@ -26,32 +25,36 @@ const issPosititoData = async () => {
         });
 
         if (!map) {
-            map = L.map('map').setView([latitude, longitude], 3);
+            map = L.map('map').setView(newLatLng, 3);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(map);
-            marker = L.marker([latitude, longitude], {icon: issIcon, rotationAngle: 0, rotationOrigin: 'center center'}).addTo(map);
-        } else {
-            const newLatLng = [latitude, longitude];
-            if (prevPosition) {
-                const angle = calculateAngle(prevPosition, newLatLng);
-                marker.setRotationAngle(angle);
-            }
-            map.setView(newLatLng, 3);
-            marker.setLatLng(newLatLng);
         }
-        prevPosition = [latitude, longitude];
+
+        if (!marker && prevPosition) {
+            const angle = calculateAngle(prevPosition, newLatLng);
+            marker = L.marker(newLatLng, {icon: issIcon, rotationAngle: angle, rotationOrigin: 'center center'}).addTo(map);
+        } else if (marker && prevPosition) {
+            const angle = calculateAngle(prevPosition, newLatLng);
+            marker.setLatLng(newLatLng);
+            marker.setRotationAngle(angle);
+        }
+
+        map.setView(newLatLng, 3);
+        prevPosition = newLatLng;
     } catch (error) {
         console.error("Error updating ISS position:", error);
     }
 }
 
-function calculateAngle(prev, next) {
-    const dx = next[1] - prev[1];
-    const dy = next[0] - prev[0];
-    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-    return angle;
+// Initial setup with two API calls
+async function initializeISS() {
+    await issPosititoData(true);
+    // Wait for 1 second due to API rate limit
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    await issPosititoData();
 }
 
-await issPosititoData();
+// Start the process
+initializeISS();
 setInterval(issPosititoData, 10000);
 
 //auto-response
