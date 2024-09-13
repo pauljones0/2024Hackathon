@@ -158,11 +158,21 @@ h2 {
   cursor: pointer;
 }
 
-#map-iframe {
+.leaflet-marker-icon {
+  background: none;
+  border: none;
+  transform-origin: center center;
+}
+
+#map {
   width: 100%;
+  height: 20vw;
   border-radius: 25px;
   border: 5px solid #e5e5e5;
-  height: 30rem;
+}
+#map .leaflet-control-zoom,
+#map .leaflet-control-attribution {
+  display: none;
 }
 
 #button-up {

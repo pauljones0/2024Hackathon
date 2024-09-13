@@ -1,10 +1,18 @@
 export class ISSApi {
     constructor() {
-        this.baseUrl = "http://api.open-notify.org/iss-now.json";
+        this.baseUrl = "https://api.wheretheiss.at/v1/satellites/25544";
     }
 
     async getIssPosition() {
-        const issPosition = await axios.get(this.baseUrl);
-        return issPosition.data;
+        try {
+            const response = await axios.get(this.baseUrl);
+            return {
+                latitude: response.data.latitude,
+                longitude: response.data.longitude
+            };
+        } catch (error) {
+            console.error("Error fetching ISS position:", error);
+            throw error;
+        }
     }
 }
