@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Constants for UTF emojis
+    // Constants for UTF emojis, using hexadecimal allows for emojis to behave when using the typed.js library
     const VULCAN_SALUTE = '&#x1F596;';
     const ROCKET = '&#x1F680;';
     const WAVING_HAND = '&#x1F44B;';

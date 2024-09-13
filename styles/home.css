@@ -58,6 +58,7 @@ h2 {
 
 .hero {
   display: flex;
+  height: 50vh;
 }
 .hero__wrapper {
   padding-top: 5%;
@@ -68,7 +69,10 @@ h2 {
 
 .main__section {
   display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
+  padding-bottom: 20px;
+  scrollbar-width: thick;
+  scrollbar-color: #fca311 #14213D;
 }
 .main__div {
   padding-top: 5%;
