@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HÆKÆSHIP: Extraterrestrial Networking Site</title>
+    <link rel="icon"type="image/x-icon" href="./assets/icons/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/home.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+</head>
+<body> 
+    <div class="stars"></div>
+    <header class="header">
+        <nav class="header__nav">
+            <h1 id="top" class="header__title">HÆKÆSHIP</h1>
+            <ul class="header__page-list">
+                <li class="header__page"><a href="#main">Histøry</a></li>
+                <li class="header__page"><a href="#location">Løcatiøn</a></li>
+                <li class="header__page"><a href="#hakaship">Hækæship</a></li>
+                <li class="header__page"><a href="#form">Buzz-Cønnect</a></li>
+            </ul>
+        </nav>
+        <div class="hero" id="about">
+            <div class="hero__wrapper">
+                <span id="typed-output"> </span>
+            </div>
+        </div>   
+    </header>
+    <main class="main">
+        <h2 id="main" class="main__heading">Our Past and Now</h2> <!--intro section: what happened (previously on...)-->
+        <section class="main__section">
+            <div class="main__div">
+                <p class="main__description">If you are having a bad day...</p>
+                <img class="main__img" src="./assets/images/feeling-down.png" alt="bad day">
+            </div>
+
+            <div class="main__div">
+                <p class="main__description">Our planet encountered a catastrophy and it was destroyed in year 5050.</p>
+                <img class="main__img" src="./assets/images/catastrophy.jpg" alt="catastrophy">
+            </div>
+
+            <div class="main__div">
+                <p class="main__description">We were selected and sent off into the ambyss of Space by our ancestors as the last hope.</p>
+                <img class="main__img" src="./assets/images/spaceship-2.jpg" alt="loading on spaceship">
+            </div>
+
+            <div class="main__div">
+                <p class="main__description">Good news: we survived :D<br>
+                    
+                    <br>Not so good news: we are continuously wandering D:</p>
+                <img class="main__img" src="./assets/images/flying-space.jpg" alt="flying in space">
+            </div>
+
+            <div class="main__div">
+                <p class="main__description">...hope your day isn't that bad anymore.</p>
+                <img class="main__img" src="./assets/images/have-a-great-day-wishes-funny-dancing-bananas-design-template-b3f3be2f5e0f8135b794305267d7db77_screen.jpg" alt="good day">
+            </div>
+        </section>
+
+        <section id="location" class="location">
+            <h2 class="location__title">Our Location (Live Updates)</h2>
+            <div class="location__map">
+                <iframe id="map-iframe"></iframe>
+            </div>
+        </section> 
+
+        <section id="hakaship" class="gallery"><!--detail images of spaceship/look-->
+            <h2 class="gallery__ship-title">Hækæship</h2>
+            <img class="gallery__ship-only" src=./assets/images/main-ship.png> <!--grid display for images-->
+            <h2 class="gallery__inside-title">Inside the Hækæship</h2>
+            <div class="gallery__inside">
+                <div class="gallery__image-container"><img class="gallery__inside-image"src="./assets/images/interior-1.jpg" alt=""></div>
+                <div class="gallery__image-container"><img class="gallery__inside-image"src="./assets/images/interior4.webp" alt=""></div>
+                <div class="gallery__image-container"><img class="gallery__inside-image"src="./assets/images/interior2.jpg" alt=""></div>
+                <div class="gallery__image-container"><img class="gallery__inside-image"src="./assets/images/interior6.jpg" alt=""></div>
+                <div class="gallery__image-container"><img class="gallery__inside-image"src="./assets/images/interior5.webp" alt=""></div>
+                <div class="gallery__image-container"><img class="gallery__inside-image"src="./assets/images/interior3.jpg" alt=""></div>
+            </div>
+        </section>
+    </main>
+
+    <section id="form" class="form">
+        <h2 class="form__heading">Buzz-Connect With Us</h2>
+        <div class="form__reponse-div">
+            <form class="form__submission">
+                <label class="form__label" for="location">Planet/Spaceship Name</label>
+                <input class="form__input"name="location" id="location" type="text" required>
+                
+                <label class="form__label" for="species">Species Name</label>
+                <input class="form__input"name="species" id="species" type="text" required>
+                
+                <label class="form__label" for="intention">Intention</label>
+                <textarea class="form__input form__input--large"name="intention" id="intention" required></textarea>
+
+                <button class="form__button" type="submit">Buzz-Connect</button>
+            </form>
+
+            <p class="form__response"></p>
+        </div>
+    </section>
+ 
+    <a href="#top"><button id="button-up" class="button-image"></button></a>
+
+    <!-- JS -->
+    <script src="./scripts/title.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script type="module" src="./scripts/typing.js"></script>
+    <script type="module" src="./scripts/index-page.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5IlpYhATifj2bSew0y2eahEjxri15PuM"></script>
+
+    <script src="./scripts/stars.js"></script>
+</body>
+</html> 
