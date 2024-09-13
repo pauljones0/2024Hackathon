@@ -42,12 +42,12 @@ Navigate through the site to learn about the Hækætheæns' history, track their
 
 This project was created during a hackathon and is not actively maintained. However, if you have suggestions or want to contribute, please feel free to fork the repository and create a pull request.
 
-## 👥 Authors
+## 👥 Contributors
 
-- Paul Jones - [GitHub](https://github.com/pauljones0)
-- Grace Li
-- Vina Q
-- Antares Valle
+- Paul Jones - [GitHub](https://github.com/pauljones0) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pauljones0)
+- Grace Li - [GitHub](https://github.com/Grace-3908254) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/grace-li-ba26a1323/)
+- Vina Q - [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/vinaq/) [![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://www.mariavina.com/)
+- Antares Valle - [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/antares-valle/)
 
 ## 📜 License
 
