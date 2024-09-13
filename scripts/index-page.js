@@ -1,5 +1,5 @@
 import { ISSApi } from "./iss-api.js";
-import { calculateAngle } from "./utilities.js";
+import { calculateAngle, adjustAngleForIcon } from "./utilities.js";
 
 let map;
 let marker;
@@ -19,7 +19,7 @@ const issPosititoData = async (isInitialCall = false) => {
         }
 
         const issIcon = L.icon({
-            iconUrl: './assets/images/iss-icon.png',
+            iconUrl: 'assets/icons/favicon.ico',
             iconSize: [32, 32],
             iconAnchor: [16, 16],
         });
@@ -31,11 +31,13 @@ const issPosititoData = async (isInitialCall = false) => {
 
         if (!marker && prevPosition) {
             const angle = calculateAngle(prevPosition, newLatLng);
-            marker = L.marker(newLatLng, {icon: issIcon, rotationAngle: angle, rotationOrigin: 'center center'}).addTo(map);
+            const adjustedAngle = adjustAngleForIcon(angle);
+            marker = L.marker(newLatLng, {icon: issIcon, rotationAngle: adjustedAngle, rotationOrigin: 'center center'}).addTo(map);
         } else if (marker && prevPosition) {
             const angle = calculateAngle(prevPosition, newLatLng);
+            const adjustedAngle = adjustAngleForIcon(angle);
             marker.setLatLng(newLatLng);
-            marker.setRotationAngle(angle);
+            marker.setRotationAngle(adjustedAngle);
         }
 
         map.setView(newLatLng, 3);

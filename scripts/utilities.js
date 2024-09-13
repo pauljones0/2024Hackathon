@@ -8,3 +8,9 @@ export function calculateAngle(prev, next) {
 
     return (angle + 360) % 360;
 }
+
+export function adjustAngleForIcon(angle) {
+    // Subtract 45 degrees to compensate for the icon's initial rotation
+    // Then normalize to ensure the angle is between 0 and 360
+    return (angle - 45 + 360) % 360;
+}
